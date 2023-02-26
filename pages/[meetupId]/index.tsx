@@ -1,4 +1,4 @@
-import { Fragment } from "react;";
+import { Fragment } from "react";
 import Head from "next/head";
 import { ObjectId } from "mongodb";
 import { queryCollection, queryOne } from "@/lib/mongoConnect";
