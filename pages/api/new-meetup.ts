@@ -2,7 +2,7 @@
 // POST /api/new-meetup
 
 import type { NextApiRequest, NextApiResponse } from "next";
-import { MongoClient } from "mongodb";
+import { writeToCollection } from "@/lib/mongoConnect";
 
 type Data = {
   message: string;
@@ -16,21 +16,7 @@ async function newMeetupHandler(
     const data = req.body;
 
     const { title, image, address, description } = data;
-
-    const client = await MongoClient.connect(
-      "mongodb+srv://dcotelessa:6TxmovK1ofh9gwkI@nextmeetupdemo.77dfao0.mongodb.net/?retryWrites=true&w=majority"
-    );
-
-    const db = client.db();
-
-    const meetupsCollection = db.collection("meetup");
-
-    const result = await meetupsCollection.insertOne(data);
-
-    console.log(result);
-
-    client.close();
-
+    const result = await writeToCollection("meetup", data);
     res.status(201).json({ message: "Meeting Inserted" });
   }
 }
