@@ -1,3 +1,5 @@
+import { Fragment } from "react;";
+import Head from "next/head";
 import { ObjectId } from "mongodb";
 import { queryCollection } from "@/lib/mongoConnect";
 import MeetupList from "components/meetups/MeetupList";
@@ -23,7 +25,18 @@ interface HomePageProps {
 }
 
 function HomePage(props: HomePageProps) {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Next Meetup</title>
+        <meta
+          name="description"
+          content="Browse thru a list of Next React meetups"
+        />
+      </Head>
+      <MeetupList meetups={props.meetups} />
+    </Fragment>
+  );
 }
 
 // export async function getServerSideProps(context) {
