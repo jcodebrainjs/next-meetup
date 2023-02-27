@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 import { ObjectId } from "mongodb";
-import { queryCollection, queryOne } from "@/lib/mongoConnect";
+import { queryCollection, queryOne } from "@/lib/getMongoClient";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 
 interface MeetupProps {

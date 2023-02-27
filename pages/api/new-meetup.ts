@@ -2,7 +2,7 @@
 // POST /api/new-meetup
 
 import type { NextApiRequest, NextApiResponse } from "next";
-import { writeToCollection } from "@/lib/mongoConnect";
+import { writeToCollection } from "@/lib/getMongoClient";
 
 type Data = {
   message: string;

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 import { ObjectId } from "mongodb";
-import { queryCollection } from "@/lib/mongoConnect";
+import { queryCollection } from "@/lib/getMongoClient";
 import MeetupList from "components/meetups/MeetupList";
 
 interface QueryCollectionProps {
@@ -60,7 +60,6 @@ export async function getStaticProps() {
         id: _id.toString(),
       })),
     },
-    revalidate: 1,
   };
 }
 
