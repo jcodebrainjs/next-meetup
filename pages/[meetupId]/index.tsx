@@ -48,7 +48,7 @@ function MeetupDetails(props: MeetupDataProps) {
 export async function getStaticPaths() {
   const meetups = await queryCollection("meetup", {}, { _id: 1 });
   return {
-    fallback: false,
+    fallback: "blocking",
     paths: meetups.map((meetup: QueryCollectionProps) => ({
       params: { meetupId: meetup._id.toString() },
     })),
